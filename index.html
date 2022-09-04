@@ -43,9 +43,21 @@
 					<label for="vMoney">Ammonto Spesa: </label>
 					<input type="number" name="vMoney" class="pure-input-rounded" required>
 				</div>
-				<button type="submit" id="fsubmit" class="pure-button">Invia</button>
+				<button type="submit" id="fsubmit" class="pure-button" onclick="myFunction()">Invia</button>
 			</fieldset>
 		</form>
 	</div>
+	<script type="text/javascript">
+		function myFunction() {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+		}
+	</script>
 </body>
 </html>

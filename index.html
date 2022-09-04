@@ -12,7 +12,8 @@
 	<h1><b>Aggiungi una spesa</b></h1>
 	<div>
 		<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-		<form class="pure-form pure-form-aligned"
+		<form name="form"
+			class="pure-form pure-form-aligned"
 		  	method="POST"
 		  	action="https://script.google.com/macros/s/AKfycbzs56LGAg0DL7XS6mNsSkxYGtFFKK_BNz8sVc6t8-RcIlBY1Bpk28_XmrAwGK-_c2Ql/exec"
 		 	target="dummyframe"
@@ -42,7 +43,8 @@
 					<label for="vMoney">Ammonto Spesa: </label>
 					<input type="number" name="vMoney" class="pure-input-rounded" required>
 				</div>
-				<button type="submit" id="fsubmit" class="pure-button">Invia</button>
+				<!--<button type="submit" id="fsubmit" class="pure-button">Invia</button>-->
+				<input type='reset' onclick='document.forms["form"].submit();'>
 			</fieldset>
 		</form>
 	</div>

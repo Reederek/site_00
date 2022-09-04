@@ -40,9 +40,15 @@
 					<label for="vMoney">Ammonto Spesa: </label>
 					<input type="number" name="vMoney" class="pure-input-rounded" required>
 				</div>
-				<button type="submit" class="pure-button">Invia</button>
+				<button type="submit" id="finalsubmit" class="pure-button">Invia</button>
 			</fieldset>
 		</form>
 	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+	 	$("#finalsubmit").focus();                                    
+		});
+	</script>;
 </body>
 </html>

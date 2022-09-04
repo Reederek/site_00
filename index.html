@@ -9,11 +9,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	Aggiungi una spesa
+	<h1><b>Aggiungi una spesa</b></h1>
 	<div>
-		<form class="pure-form pure-form-aligned"
+		<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+		<form name="form"
+			class="pure-form pure-form-aligned"
 		  	method="POST"
 		  	action="https://script.google.com/macros/s/AKfycbzs56LGAg0DL7XS6mNsSkxYGtFFKK_BNz8sVc6t8-RcIlBY1Bpk28_XmrAwGK-_c2Ql/exec"
+		 	target="hiddenFrame"
 		 >
 			 <fieldset> 
 				<div class="pure-control-group">
@@ -40,15 +43,9 @@
 					<label for="vMoney">Ammonto Spesa: </label>
 					<input type="number" name="vMoney" class="pure-input-rounded" required>
 				</div>
-				<button type="submit" id="finalsubmit" class="pure-button">Invia</button>
+				<button type="submit" id="fsubmit" class="pure-button">Invia</button>
 			</fieldset>
 		</form>
 	</div>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-	 	$("#finalsubmit").focus();                                    
-		});
-	</script>;
 </body>
 </html>

@@ -21,7 +21,7 @@
 		 >
 			 <fieldset> 
 				<div class="pure-control-group">
-					<label for="curDate">Data Attuale: </label>
+					<label for="curDate" style="color:white;">Data Attuale: </label>
 					<input type="text" id="curDate" class="pure-input-rounded" disabled="">
 					<script>
 						date = new Date();
@@ -32,7 +32,7 @@
 					</script>
 				</div>
 				<div class="pure-control-group">
-					<label for="expType">Tipo di Spesa: </label>
+					<label for="expType" style="color:white;">Tipo di Spesa: </label>
 					<select name="expType" class="pure-input-rounded" required>
 					  <option value="tFood">Cibo</option>
 					  <option value="tRent">Affitto</option>
@@ -41,12 +41,12 @@
 					</select>
 				</div>
 				<div class="pure-control-group">
-					<label for="vMoney">Ammonto Spesa: </label>
+					<label for="vMoney" style="color:white;">Ammonto Spesa: </label>
 					<input type="number" name="vMoney" class="pure-input-rounded" required>
 				</div>
 				
 				<div class="pure-control-group">
-					<label for="tNote">Note Aggiuntive: </label>
+					<label for="tNote" style="color:white;">Note Aggiuntive: </label>
 					<input type="text" name="tNote" class="pure-input-rounded">
 				</div>
 				<button type="submit" id="fsubmit" class="pure-button" onclick="myFunction()">Invia</button>

@@ -51,7 +51,7 @@
     const button_reg_node = document.getElementById('post-reg_node');
     button_reg_node.addEventListener('click', async _ => {
       try {
-        const response = fetch('http://'+ ipServer + ':5000/nodes/register', {
+        const response = fetch('https://'+ ipServer + ':5000/nodes/register', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -81,7 +81,7 @@
 
     button_res_node.addEventListener('click', async _ => {
       try {     
-        const response = await fetch('http://'+ ipServer + ':5000/nodes/resolve', {
+        const response = await fetch('https://'+ ipServer + ':5000/nodes/resolve', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -113,7 +113,7 @@
 
     button_new.addEventListener('click', async _ => {
       try {
-        const response = fetch('http://'+ ipServer + ':5000/transaction/new', {
+        const response = fetch('https://'+ ipServer + ':5000/transaction/new', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -147,7 +147,7 @@
 
     button_chain.addEventListener('click', async _ => {
       try {     
-        const response = await fetch('http://'+ ipServer + ':5000/chain', {
+        const response = await fetch('https://'+ ipServer + ':5000/chain', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -176,7 +176,7 @@
 
     button_mine.addEventListener('click', async _ => {
       try {     
-        const response = await fetch('http://'+ ipServer + ':5000/mine', {
+        const response = await fetch('https://'+ ipServer + ':5000/mine', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',

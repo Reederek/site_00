@@ -1,0 +1,197 @@
+<html>
+  <header>
+  </header>
+  <!--Menu-->
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="\index.html">Inserimento</a></li>
+    <li><a class="active" href="\blockchain.html">BlockChain</a></li>
+    <!--<li><a href="#about">About</a></li>-->
+  </ul>
+  Your IP: <label id="mydiv"></label>
+  <script>
+    var getIP = function(json) {
+      document.getElementById("mydiv").innerHTML = json.ip;
+    }
+  </script>
+  <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP">
+  </script>
+  <br>
+  Input Server Address:
+  <!--153.242.33.129-->
+  <input type="text" id="ipServer" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+  <script>
+    var myInput = document.getElementById("ipServer");
+
+    window.onload = function() {
+        if (sessionStorage.getItem("autosave")) {
+            myInput.value = sessionStorage.getItem("autosave");
+            updateIPServer();
+        }
+    }
+
+    myInput.addEventListener("keyup", function() {
+        sessionStorage.setItem("autosave", myInput.value);
+    });
+
+    function updateIPServer() {
+        ipServer = myInput.value;
+    }
+  </script>
+
+  <br>
+  Nodes:
+  <button id="post-reg_node">Register Node</button>
+  <script>
+    let ip = document.getElementById("mydiv").innerHTML;
+    console.log(ip);
+    const button_reg_node = document.getElementById('post-reg_node');
+    button_reg_node.addEventListener('click', async _ => {
+      try {
+        const response = fetch('http://'+ ipServer + ':5000/nodes/register', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            'nodes' : [ip]
+          })
+        })
+        .then(function(response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        }).then(function(data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        });
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+  </script>
+
+  <button id="post-res_node">Resolve Node</button>
+  <script>
+    const button_res_node = document.getElementById('post-res_node');
+
+    button_res_node.addEventListener('click', async _ => {
+      try {     
+        const response = await fetch('http://'+ ipServer + ':5000/nodes/resolve', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(function(response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        }).then(function(data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        });
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+  </script>
+
+
+
+
+  <br>
+  New Transaction (Sender and Recipient + Amount Needed):
+  <button id="post-btn">Start Transaction</button>
+  <script>
+    const button_new = document.getElementById('post-btn');
+
+    button_new.addEventListener('click', async _ => {
+      try {
+        const response = fetch('http://'+ ipServer + ':5000/transaction/new', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            'sender':'ueqxhn2vmz2exaygy9z3',
+            'recipient': 'reederek',
+            'amount': 100
+          })
+        })
+        .then(function(response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        }).then(function(data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        });
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+  </script>
+  
+  <br>
+  Chain:
+  <button id="post-btn_chain">Request Chain</button>
+  <script>
+    const button_chain = document.getElementById('post-btn_chain');
+
+    button_chain.addEventListener('click', async _ => {
+      try {     
+        const response = await fetch('http://'+ ipServer + ':5000/chain', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(function(response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        }).then(function(data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        });
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+  </script>
+
+  <br>
+  Mine:
+  <button id="post-btn_mine">Request Mine</button>
+  <script>
+    const button_mine = document.getElementById('post-btn_mine');
+
+    button_mine.addEventListener('click', async _ => {
+      try {     
+        const response = await fetch('http://'+ ipServer + ':5000/mine', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(function(response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        }).then(function(data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        });
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+  </script>
+  
+<html>
